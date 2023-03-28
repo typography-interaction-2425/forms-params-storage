@@ -9,9 +9,7 @@ body {
 
 form {
 	background-color: whitesmoke;
-	padding: calc(var(--spacing) / 2);
-}
-
-fieldset {
-	margin-top: var(--spacing);
+	display: grid;
+	gap: var(--spacing);
+	padding: var(--spacing);
 }

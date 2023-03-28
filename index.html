@@ -11,24 +11,28 @@
 		<aside><em>This is a <a href="https://github.com/typography-interaction/inputs-storage-params">demo/template repo</a> for working with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">form inputs</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API">web storage</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URL params</a>.</em></aside>
 		<h1>Inputs, Storage, and Params</h1>
 		<form>
-			<label for="some-text">This is a basic text <code>&lt;input&gt;</code>:</label>
-			<input id="some-text" name="some-text" placeholder="Some suggested text" required type="text">
-			<button type="reset">Clear</button>
-			<button>Submit</button>
-		</form>
-		<form>
-			<label for="some-option">And a dropdown <code>&lt;select&gt;</code>:</label>
-			<select id="some-option" name="some-option">
-					<option>With options</option>
-					<option>Inside here</option>
-					<option>To select</option>
-					<optgroup label="Grouped">
-							<option>You can organize</option>
-							<option>Options in groups</option>
-					</optgroup>
-			</select>
+			<section>
+				<label for="some-text">This is a basic text <code>&lt;input&gt;</code>:</label>
+				<input id="some-text" name="some-text" placeholder="Some suggested text" required type="text">
+			</section>
+			<section>
+				<label for="some-option">And a dropdown <code>&lt;select&gt;</code>:</label>
+				<select id="some-option" name="some-option">
+						<option>With options</option>
+						<option>Inside here</option>
+						<option>To select</option>
+						<optgroup label="Grouped">
+								<option>You can organize</option>
+								<option>Options in groups</option>
+						</optgroup>
+				</select>
+			</section>
+			<section>
+				<label for="some-date">And then one for a date:</label>
+				<input id="some-date" name="some-date" type="date">
+			</section>
 			<fieldset>
-				<legend>Fieldsets group form elements</legend>
+				<legend>Fieldsets can also group form elements</legend>
 				<input checked id="first-option" name="other-option" type="radio">
 				<label for="first-option">First</label>
 				<input id="second-option" name="other-option" type="radio">
@@ -36,10 +40,10 @@
 				<input id="third-option" name="other-option" type="radio">
 				<label for="third-option">Third</label>
 			</fieldset>
-		</form>
-		<form>
-			<label for="some-date">And then one for a date:</label>
-			<input id="some-date" name="some-date" type="date">
+			<section>
+				<button type="reset">Reset</button>
+				<button>Submit</button>
+			</section>
 		</form>
 		<aside><em>These <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">form</a> elements would normally have <code>action</code> and <code>method</code> attributes for communicating back to the server, but our static hosting can’t use these.</aside>
 	</body>
