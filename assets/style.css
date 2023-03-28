@@ -1,0 +1,17 @@
+body {
+	--spacing: 2em;
+
+	display: grid;
+	gap: var(--spacing);
+	margin: initial;
+	padding: var(--spacing);
+}
+
+form {
+	background-color: whitesmoke;
+	padding: calc(var(--spacing) / 2);
+}
+
+fieldset {
+	margin-top: var(--spacing);
+}
