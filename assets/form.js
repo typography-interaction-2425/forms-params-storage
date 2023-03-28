@@ -9,12 +9,12 @@ if (window.location.search) {
 		let inputOrSelect = document.getElementById(key)
 
 		if (inputOrSelect) {
-			// Set the input to the param
+			// Set the actual input to the param value
 			inputOrSelect.value = value
 		} else {
 			// Radios are a bit different, find them by `name` attribute
 			document.querySelectorAll(`[name=${key}]`).forEach((element) => {
-				// Check the one matching the param
+				// Check the one matching the param value
 				if (value == element.value) element.checked = true
 			}
 		)
@@ -28,11 +28,10 @@ if (window.location.search) {
 const formElement = document.querySelector('form')
 
 // Function to update the URL from the form
-const updateQueryString = () => {
+const updateUrlParams = () => {
 	let formParams = new FormData(formElement) // Get the form data
-
 	formParams = new URLSearchParams(formParams) // Make it into params
-	formParams = formParams.toString() // And then into a string.
+	formParams = formParams.toString() // And then into a string
 
 	// You could also write this as:
 	// let formParams = new URLSearchParams(new FormData(formElement)).toString()
@@ -41,15 +40,17 @@ const updateQueryString = () => {
 	window.history.replaceState(null, null, '?' + formParams)
 }
 
-// When the form is submitted
+
+
+// Run this when the form is submitted
 formElement.onsubmit = () => {
 	event.preventDefault() // Don’t actually submit (which would refresh)
 
-	updateQueryString() // But update the query string
+	updateUrlParams() // But update the query string
 }
 
 // Or even any time it is modified!
-formElement.oninput = () => updateQueryString()
+formElement.oninput = () => updateUrlParams()
 
 
 
