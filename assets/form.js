@@ -27,6 +27,15 @@ if (window.location.search) {
 // Find your form
 const formElement = document.querySelector('form')
 
+const storeParams = () => {
+	let formParams = new FormData(formElement) // Get the form data
+
+	// Loop through each key/value pair
+	formParams.forEach((value, key) => {
+		localStorage.setItem(key, value) // And save them out
+	})
+}
+
 // Function to update the URL from the form
 const updateUrlParams = () => {
 	let formParams = new FormData(formElement) // Get the form data
@@ -38,6 +47,9 @@ const updateUrlParams = () => {
 
 	// Update the URL with the params at the end
 	window.history.replaceState(null, null, '?' + formParams)
+
+	// And also store them!
+	storeParams()
 }
 
 
@@ -57,4 +69,9 @@ formElement.oninput = () => updateUrlParams()
 // Clear any query/params from the URL
 document.getElementById('reset-params').onclick = () => {
 	window.history.replaceState(null, null, window.location.pathname)
+}
+
+// And toss your localStorage
+document.getElementById('reset-storage').onclick = () => {
+	localStorage.clear()
 }
