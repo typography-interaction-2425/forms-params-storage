@@ -1,10 +1,8 @@
-// First, check for query/params in the URL
-if (window.location.search) {
-	// Parse them into a variable
-	let urlParams = new URLSearchParams(window.location.search)
+// Function to match the form to URL/stored params
+const updateForm = (params) => {
+	params = new URLSearchParams(params) // Parse into params
 
-	// Loop through each key/value pair
-	urlParams.forEach((value, key) => {
+	params.forEach((value, key) => {
 		// Find them by their ID
 		let inputOrSelect = document.getElementById(key)
 
@@ -20,6 +18,22 @@ if (window.location.search) {
 		)
 		}
 	})
+}
+
+
+
+// First, check for query/params in the URL
+if (window.location.search) {
+	let urlParams = window.location.search // Get the query string
+
+	updateForm(urlParams) // Update the form from these
+}
+
+// Otherwise check for saved params in storage
+else if (localStorage.length > 0) {
+	let storedParams = Object.entries(localStorage) // Get the saved params
+
+	updateForm(storedParams) // Update the form from these
 }
 
 
