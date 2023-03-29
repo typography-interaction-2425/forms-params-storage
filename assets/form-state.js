@@ -23,6 +23,9 @@ const updateForm = (params) => {
 		)
 		}
 	})
+
+	// And a callback!
+	window.stateCallback?.()
 }
 
 // Function to save them to localStorage
@@ -49,6 +52,9 @@ const updateUrlParams = () => {
 
 	// And also store them!
 	storeParams()
+
+	// And a callback!
+	window.stateCallback?.()
 }
 
 
