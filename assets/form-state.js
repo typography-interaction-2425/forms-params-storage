@@ -75,7 +75,7 @@ else if (localStorage.length > 0) {
 
 
 // Don’t actually submit (which would refresh)
-formElement.onsubmit = () => event.preventDefault()
+formElement.onsubmit = (event) => event.preventDefault()
 
 // Run any time the form is modified
 formElement.oninput = () => updateUrlParams()
