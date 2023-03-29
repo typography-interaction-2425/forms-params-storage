@@ -1,3 +1,8 @@
+// Find your form
+const formElement = document.querySelector('form')
+
+
+
 // Function to match the form to URL/stored params
 const updateForm = (params) => {
 	params = new URLSearchParams(params) // Parse into params
@@ -20,27 +25,7 @@ const updateForm = (params) => {
 	})
 }
 
-
-
-// First, check for query/params in the URL
-if (window.location.search) {
-	let urlParams = window.location.search // Get the query string
-
-	updateForm(urlParams) // Update the form from these
-}
-
-// Otherwise check for saved params in storage
-else if (localStorage.length > 0) {
-	let storedParams = Object.entries(localStorage) // Get the saved params
-
-	updateForm(storedParams) // Update the form from these
-}
-
-
-
-// Find your form
-const formElement = document.querySelector('form')
-
+// Function to save them to localStorage
 const storeParams = () => {
 	let formParams = new FormData(formElement) // Get the form data
 
@@ -68,7 +53,22 @@ const updateUrlParams = () => {
 
 
 
-// Run this when the form is submitted
+// First, check for query/params in the URL
+if (window.location.search) {
+	let urlParams = window.location.search // Get the query string
+
+	updateForm(urlParams) // Update the form from these
+}
+// Otherwise check for saved params in storage
+else if (localStorage.length > 0) {
+	let storedParams = Object.entries(localStorage) // Get the saved params
+
+	updateForm(storedParams) // Update the form from these
+}
+
+
+
+// Run when the form is submitted
 formElement.onsubmit = () => {
 	event.preventDefault() // Don’t actually submit (which would refresh)
 
@@ -80,7 +80,7 @@ formElement.oninput = () => updateUrlParams()
 
 
 
-// Clear any query/params from the URL
+// For debugging, clear any query/params from the URL
 document.getElementById('reset-params').onclick = () => {
 	window.history.replaceState(null, null, window.location.pathname)
 }
