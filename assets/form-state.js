@@ -79,15 +79,3 @@ formElement.onsubmit = (event) => event.preventDefault()
 
 // Run any time the form is modified
 formElement.oninput = () => updateUrlParams()
-
-
-
-// For debugging, clear any query/params from the URL
-document.getElementById('reset-params').onclick = () => {
-	window.history.replaceState(null, null, window.location.pathname)
-}
-
-// And toss your localStorage
-document.getElementById('reset-storage').onclick = () => {
-	localStorage.clear()
-}
