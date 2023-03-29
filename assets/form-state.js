@@ -68,14 +68,10 @@ else if (localStorage.length > 0) {
 
 
 
-// Run when the form is submitted
-formElement.onsubmit = () => {
-	event.preventDefault() // Don’t actually submit (which would refresh)
+// Don’t actually submit (which would refresh)
+formElement.onsubmit = () => event.preventDefault()
 
-	updateUrlParams() // But update the query string
-}
-
-// Or even any time it is modified!
+// Run any time the form is modified
 formElement.oninput = () => updateUrlParams()
 
 
