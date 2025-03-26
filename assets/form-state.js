@@ -1,12 +1,14 @@
 // Find your form
-const formElement = document.querySelector('form')
-
-
+const formElement = document.querySelector('#some-form')
 
 // Function to match the form to URL/stored params
 const updateForm = (params) => {
-	params = new URLSearchParams(params) // Parse into params
+	// Parse into params
+	// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+	params = new URLSearchParams(params)
 
+	// Our friend, the loop
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 	params.forEach((value, key) => {
 		// Find them by their ID
 		let inputOrSelect = document.getElementById(key)
@@ -30,11 +32,15 @@ const updateForm = (params) => {
 
 // Function to save them to localStorage
 const storeParams = () => {
-	let formParams = new FormData(formElement) // Get the form data
+	// Get the form data
+	// https://developer.mozilla.org/en-US/docs/Web/API/FormData
+	let formParams = new FormData(formElement)
 
 	// Loop through each key/value pair
 	formParams.forEach((value, key) => {
-		localStorage.setItem(key, value) // And save them out
+		// And save them out
+		// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+		localStorage.setItem(key, value)
 	})
 }
 
@@ -60,6 +66,7 @@ const updateUrlParams = () => {
 
 
 // First, check for query/params in the URL
+// https://developer.mozilla.org/en-US/docs/Web/API/Location/search
 if (window.location.search) {
 	let urlParams = window.location.search // Get the query string
 
@@ -75,6 +82,7 @@ else if (localStorage.length > 0) {
 
 
 // Don’t actually submit (which would refresh)
+// https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 formElement.onsubmit = (event) => event.preventDefault()
 
 // Run any time the form is modified
